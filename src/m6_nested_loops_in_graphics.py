@@ -3,8 +3,8 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of TWO-DIMENSIONAL GRAPHICS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Mattias Memering.
+"""  # TOO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -80,9 +80,47 @@ def draw_L(window, circle, r, c):
     and m and n are small, positive integers.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # TOO: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    window.render(0.1)
+    point = rg.Point(circle.center.x,circle.center.y)
+    initialcircle1 = rg.Circle(rg.Point(point.x+circle.radius*2,point.y),circle.radius)
+    initialcircle1.fill_color = circle.fill_color
+    initialcircle1.attach_to(window)
+    window.render(0.1)
+    initialcircle2 = rg.Circle(rg.Point(point.x+circle.radius*4,point.y),circle.radius)
+    initialcircle2.fill_color = circle.fill_color
+    initialcircle2.attach_to(window)
+    window.render(0.1)
+    for k in range(r-1):
+        circle1 = rg.Circle(rg.Point(point.x, point.y+circle.radius*2*(k+1)), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
+        circle1 = rg.Circle(rg.Point(point.x + circle.radius * 2, point.y+circle.radius*2*(k+1)), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
+        circle1 = rg.Circle(rg.Point(point.x + circle.radius * 4, point.y+circle.radius*2*(k+1)), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
+    point = rg.Point(point.x, point.y+circle.radius*2*(r))
+    for k in range(c+3):
+        circle1 = rg.Circle(rg.Point(point.x+circle.radius*2*k, point.y), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
+        circle1 = rg.Circle(rg.Point(point.x+circle.radius*2*k, point.y+circle.radius*2), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
+        circle1 = rg.Circle(rg.Point(point.x+circle.radius*2*k, point.y+circle.radius*4), circle.radius)
+        circle1.fill_color = circle.fill_color
+        circle1.attach_to(window)
+        window.render(0.1)
 
 
 def run_test_draw_wall_on_right():
@@ -121,11 +159,18 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TDO: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-
-
+    rectangle.attach_to(window)
+    window.render(0.1)
+    for k in range(n-1):
+        for b in range(k+2):
+            nutangle = rg.Rectangle(rg.Point(rectangle.corner_1.x - rectangle.get_width() * b,
+                                             rectangle.corner_1.y + rectangle.get_height() * (1 + k)),
+                                    rg.Point(rectangle.corner_2.x -rectangle.get_width()*b,rectangle.corner_2.y+rectangle.get_height()*(1+k)))
+            nutangle.attach_to(window)
+            window.render(0.1)
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------

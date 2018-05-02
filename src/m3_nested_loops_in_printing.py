@@ -3,8 +3,8 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of PRINTING on the CONSOLE.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Mattias Memering.
+"""  # TOO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -43,8 +43,13 @@ def rectangle_of_stars(r, c):
        *****
     Preconditions:  r and c are non-negative integers.
     """
+    sequence = []
+    for k in range(c):
+        sequence = sequence + ["*"]
+    for k in range(r):
+        print(str(sequence))
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # TOO: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     #  *** Unless your instructor directs you otherwise,
@@ -97,8 +102,13 @@ def triangle_of_stars(r):
        *****
     Precondition:  r is a non-negative integer.
     """
+    sequence = []
+    for k in range(r):
+        sequence = sequence + ["*"]
+        print(str(sequence))
+
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # TDO: 3. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     #  *** Unless your instructor directs you otherwise,
@@ -149,8 +159,14 @@ def decreasing_exclamation_marks(m, n):
        !!
     Precondition:  m and n are positive integers with m >= n.
     """
+    sequence = []
+    for k in range(m):
+        sequence = sequence + ["!"]
+    while len(sequence) >= n:
+        print(str(sequence))
+        del sequence[0]
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # TDO: 4. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -191,8 +207,21 @@ def alternating_brackets(m, n):
        []
     Precondition:  m and n are positive integers with m >= n.
     """
+    sequence = []
+    while True:
+        sequence = sequence + ["["]
+        if len(sequence) == m:
+            break
+        sequence = sequence + ["]"]
+        if len(sequence) == m:
+            break
+    print(str(sequence))
+    while len(sequence) > n:
+        del sequence[len(sequence) - 1]
+        print(str(sequence))
+
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # TDO: 5. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -234,8 +263,14 @@ def triangle_same_number_in_each_row(r):
        55555
     Precondition:  r is a non-negative integer.
     """
+    for k in range(r):
+        sequence = []
+        while len(sequence) < (k + 1):
+            sequence = sequence + [str(k + 1)]
+        print(str(sequence))
+
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # TDO: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -277,8 +312,12 @@ def triangle_all_numbers_in_each_row(r):
        12345
     Precondition:  r is a non-negative integer.
     """
+    sequence = []
+    for k in range(r):
+        sequence = sequence + [str(k + 1)]
+        print(str(sequence))
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # TOO: 7. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
